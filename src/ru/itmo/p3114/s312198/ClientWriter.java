@@ -22,7 +22,7 @@ public class ClientWriter {
             System.out.println("Unable to write");
         } else {
             try {
-                writer.write(line);
+                writer.write(line + '\n');
                 writer.flush();
             } catch (IOException ioe) {
                 ioe.printStackTrace();
