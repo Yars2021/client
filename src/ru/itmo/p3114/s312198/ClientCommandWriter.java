@@ -22,11 +22,13 @@ public class ClientCommandWriter {
         if (writer == null) {
             System.out.println("Unable to write");
         } else {
-            try {
-                writer.writeObject(command);
-                writer.flush();
-            } catch (IOException ioe) {
-                ioe.printStackTrace();
+            if (command != null) {
+                try {
+                    writer.writeObject(command);
+                    writer.flush();
+                } catch (IOException ioe) {
+                    ioe.printStackTrace();
+                }
             }
         }
     }
