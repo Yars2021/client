@@ -31,7 +31,6 @@ public class UserInterface {
         for (String line : commandOutput.getOutput()) {
             System.out.println(line);
         }
-        System.out.println();
     }
 
     public void closeConnection() {
