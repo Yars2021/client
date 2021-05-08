@@ -1,10 +1,11 @@
-package ru.itmo.p3114.s312198;
+package ru.itmo.p3114.s312198.command;
 
 import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
+import java.net.SocketException;
 
 public class ClientCommandWriter {
     private ObjectOutputStream writer;
@@ -18,7 +19,7 @@ public class ClientCommandWriter {
         }
     }
 
-    public void send(AbstractCommand command) {
+    public void send(AbstractCommand command) throws SocketException {
         if (writer == null) {
             System.out.println("Unable to write");
         } else {
@@ -27,7 +28,7 @@ public class ClientCommandWriter {
                     writer.writeObject(command);
                     writer.flush();
                 } catch (IOException ioe) {
-                    ioe.printStackTrace();
+                    throw new SocketException("Lost connection to the server");
                 }
             }
         }
@@ -36,8 +37,7 @@ public class ClientCommandWriter {
     public void close() {
         try {
             writer.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 }

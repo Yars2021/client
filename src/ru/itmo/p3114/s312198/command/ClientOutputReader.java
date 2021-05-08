@@ -1,4 +1,4 @@
-package ru.itmo.p3114.s312198;
+package ru.itmo.p3114.s312198.command;
 
 import ru.itmo.p3114.s312198.util.CommandOutput;
 
@@ -26,7 +26,6 @@ public class ClientOutputReader {
             try {
                 return (CommandOutput) reader.readObject();
             } catch (IOException ioe) {
-                ioe.printStackTrace();
                 return null;
             } catch (ClassNotFoundException cnfe) {
                 cnfe.printStackTrace();
