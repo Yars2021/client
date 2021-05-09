@@ -4,7 +4,6 @@ import ru.itmo.p3114.s312198.util.UserInterface;
 import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
 
 import java.net.SocketException;
-import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
