@@ -4,6 +4,7 @@ import ru.itmo.p3114.s312198.command.ClientCommandWriter;
 import ru.itmo.p3114.s312198.command.ClientOutputReader;
 import ru.itmo.p3114.s312198.util.command.CommandLineProcessor;
 import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
+import ru.itmo.p3114.s312198.util.command.actions.ExecuteScript;
 
 import java.io.IOException;
 import java.net.Socket;
@@ -29,11 +30,12 @@ public class UserInterface {
         clientOutputReader = new ClientOutputReader(clientSocket);
     }
 
-    public void sendCommand() throws SocketException {
+    public AbstractCommand sendCommand() throws SocketException {
         AbstractCommand command = commandLineProcessor.parseInput(ConsoleReader.readLine(), false);
         if (command != null) {
             clientCommandWriter.send(command);
         }
+        return command;
     }
 
     public void writeOutput() {

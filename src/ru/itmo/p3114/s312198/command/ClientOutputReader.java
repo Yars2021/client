@@ -37,8 +37,7 @@ public class ClientOutputReader {
     public void close() {
         try {
             reader.close();
-        } catch (IOException ioe) {
-            ioe.printStackTrace();
+        } catch (IOException ignored) {
         }
     }
 }

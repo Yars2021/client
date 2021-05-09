@@ -1,8 +1,10 @@
 package ru.itmo.p3114.s312198;
 
 import ru.itmo.p3114.s312198.util.UserInterface;
+import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
 
 import java.net.SocketException;
+import java.nio.file.Paths;
 
 public class Main {
     public static void main(String[] args) {
@@ -14,8 +16,11 @@ public class Main {
             System.out.println("Study group collection manager\nUse \"help\" to see the command reference");
             while (true) {
                 System.out.print("> ");
-                userInterface.sendCommand();
-                userInterface.writeOutput();
+                AbstractCommand lastCommand;
+                lastCommand = userInterface.sendCommand();
+                if (lastCommand != null) {
+                    userInterface.writeOutput();
+                }
             }
         } catch (SocketException se) {
             System.out.println(se.getMessage());
