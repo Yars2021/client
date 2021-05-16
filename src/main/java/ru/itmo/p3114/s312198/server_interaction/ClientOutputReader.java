@@ -1,4 +1,4 @@
-package ru.itmo.p3114.s312198.command;
+package ru.itmo.p3114.s312198.server_interaction;
 
 import ru.itmo.p3114.s312198.util.CommandOutput;
 

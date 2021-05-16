@@ -5,7 +5,7 @@ import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
 
 import java.net.SocketException;
 
-public class Main {
+public class Client {
     public static void main(String[] args) {
         System.out.println("Searching for the server...");
         UserInterface userInterface = new UserInterface();

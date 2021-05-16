@@ -1,10 +1,9 @@
 package ru.itmo.p3114.s312198.util;
 
-import ru.itmo.p3114.s312198.command.ClientCommandWriter;
-import ru.itmo.p3114.s312198.command.ClientOutputReader;
+import ru.itmo.p3114.s312198.server_interaction.ClientCommandWriter;
+import ru.itmo.p3114.s312198.server_interaction.ClientOutputReader;
 import ru.itmo.p3114.s312198.util.command.CommandLineProcessor;
 import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
-import ru.itmo.p3114.s312198.util.command.actions.ExecuteScript;
 
 import java.io.IOException;
 import java.net.Socket;
