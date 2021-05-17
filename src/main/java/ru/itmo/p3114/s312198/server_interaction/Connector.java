@@ -1,11 +1,11 @@
-package ru.itmo.p3114.s312198.util;
+package ru.itmo.p3114.s312198.server_interaction;
 
 import java.io.IOException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class Connector {
-    Socket requestConnection(String host, int port) {
+    public Socket requestConnection(String host, int port) {
         try {
             Socket socket = new Socket(host, port);
             socket.setReuseAddress(true);

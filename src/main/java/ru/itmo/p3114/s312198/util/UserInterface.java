@@ -1,7 +1,9 @@
 package ru.itmo.p3114.s312198.util;
 
+import ru.itmo.p3114.s312198.authorization.UserSignature;
 import ru.itmo.p3114.s312198.server_interaction.ClientCommandWriter;
 import ru.itmo.p3114.s312198.server_interaction.ClientOutputReader;
+import ru.itmo.p3114.s312198.server_interaction.Connector;
 import ru.itmo.p3114.s312198.util.command.CommandLineProcessor;
 import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
 
@@ -14,6 +16,7 @@ public class UserInterface {
     private ClientCommandWriter clientCommandWriter;
     private ClientOutputReader clientOutputReader;
     private final CommandLineProcessor commandLineProcessor = new CommandLineProcessor();
+    private UserSignature userSignature;
 
     public void connect(String host, int port) throws SocketException {
         Connector connector = new Connector();
@@ -29,10 +32,10 @@ public class UserInterface {
         clientOutputReader = new ClientOutputReader(clientSocket);
     }
 
-    public AbstractCommand sendCommand() throws SocketException {
+    public AbstractCommand sendDataPacket() throws SocketException {
         AbstractCommand command = commandLineProcessor.parseInput(ConsoleReader.readLine(), false);
         if (command != null) {
-            clientCommandWriter.send(command);
+            clientCommandWriter.send(new DataPacket(command, userSignature));
         }
         return command;
     }
@@ -45,6 +48,18 @@ public class UserInterface {
                 System.out.println(line);
             }
         }
+    }
+
+    public void setUserSignature(UserSignature userSignature) {
+        this.userSignature = userSignature;
+    }
+
+    public UserSignature getUserSignature() {
+        return userSignature;
+    }
+
+    public Socket getClientSocket() {
+        return clientSocket;
     }
 
     public void closeConnection() {

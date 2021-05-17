@@ -1,6 +1,6 @@
 package ru.itmo.p3114.s312198.server_interaction;
 
-import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
+import ru.itmo.p3114.s312198.util.DataPacket;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -14,18 +14,17 @@ public class ClientCommandWriter {
         try {
             writer = new ObjectOutputStream(clientSocket.getOutputStream());
         } catch (IOException ioe) {
-            // todo
             ioe.printStackTrace();
         }
     }
 
-    public void send(AbstractCommand command) throws SocketException {
+    public void send(DataPacket dataPacket) throws SocketException {
         if (writer == null) {
             System.out.println("Unable to write");
         } else {
-            if (command != null) {
+            if (dataPacket != null) {
                 try {
-                    writer.writeObject(command);
+                    writer.writeObject(dataPacket);
                     writer.flush();
                 } catch (IOException ioe) {
                     throw new SocketException("Lost connection to the server");
