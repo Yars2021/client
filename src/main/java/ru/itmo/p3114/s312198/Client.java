@@ -14,6 +14,7 @@ public class Client {
         boolean running = true;
         String input;
 
+        System.out.println("Searching for the server...");
         while (running) {
             try {
                 userInterface.connect("localhost", 6547);
