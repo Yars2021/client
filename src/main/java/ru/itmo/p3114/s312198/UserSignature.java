@@ -1,4 +1,4 @@
-package ru.itmo.p3114.s312198.authorization;
+package ru.itmo.p3114.s312198;
 
 import ru.itmo.p3114.s312198.util.CommandOutput;
 

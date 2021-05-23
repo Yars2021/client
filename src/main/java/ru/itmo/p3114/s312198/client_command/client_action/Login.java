@@ -35,6 +35,7 @@ public class Login extends AbstractClientCommand {
         if (arguments == null || arguments.size() < 2) {
             return new CommandOutput(Status.INCORRECT_ARGUMENTS, null);
         } else {
+            output.add("LOG");
             output.add(arguments.get(0));
             output.add(SHA1(arguments.get(0) + arguments.get(1)));
             return new CommandOutput(Status.OK, output);

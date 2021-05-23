@@ -32,10 +32,11 @@ public class Register extends AbstractClientCommand {
     @Override
     public CommandOutput execute() {
         ArrayList<String> output = new ArrayList<>();
-        if (arguments == null || arguments.size() < 3) {
+        if (arguments == null || arguments.size() < 2) {
             return new CommandOutput(Status.INCORRECT_ARGUMENTS, null);
         } else {
-            if (arguments.get(1) != null && arguments.get(1).equals(arguments.get(2))) {
+            if (arguments.get(1) != null) {
+                output.add("REG");
                 output.add(arguments.get(0));
                 output.add(SHA1(arguments.get(0) + arguments.get(1)));
                 return new CommandOutput(Status.OK, output);
