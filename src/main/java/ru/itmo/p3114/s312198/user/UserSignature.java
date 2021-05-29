@@ -1,4 +1,4 @@
-package ru.itmo.p3114.s312198;
+package ru.itmo.p3114.s312198.user;
 
 import ru.itmo.p3114.s312198.util.CommandOutput;
 

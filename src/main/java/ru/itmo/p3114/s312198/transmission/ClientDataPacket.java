@@ -1,5 +1,6 @@
-package ru.itmo.p3114.s312198;
+package ru.itmo.p3114.s312198.transmission;
 
+import ru.itmo.p3114.s312198.user.UserSignature;
 import ru.itmo.p3114.s312198.util.command.actions.AbstractCommand;
 
 import java.io.Serializable;

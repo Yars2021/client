@@ -1,4 +1,6 @@
-package ru.itmo.p3114.s312198;
+package ru.itmo.p3114.s312198.authorization;
+
+import ru.itmo.p3114.s312198.user.UserSignature;
 
 import java.io.Serializable;
 
