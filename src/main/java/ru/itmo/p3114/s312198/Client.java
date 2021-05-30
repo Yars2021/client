@@ -9,6 +9,7 @@ import ru.itmo.p3114.s312198.transmission.structures.packet.ClientDataPacket;
 import ru.itmo.p3114.s312198.transmission.structures.authorization.AuthorizationRequest;
 import ru.itmo.p3114.s312198.transmission.structures.authorization.AuthorizationResponse;
 import ru.itmo.p3114.s312198.command.CommandOutput;
+import ru.itmo.p3114.s312198.transmission.structures.packet.ServerDataPacket;
 import ru.itmo.p3114.s312198.util.ConsoleReader;
 import ru.itmo.p3114.s312198.command.CommandLineProcessor;
 import ru.itmo.p3114.s312198.command.actions.AbstractCommand;
@@ -26,7 +27,8 @@ public class Client {
             try (CSChannel channel = new CSChannel(new Socket("localhost", port))) {
                 System.out.println("Use \"login\" to log in, \"register\" to create an account or \"exit\" to exit");
                 try {
-                    AuthorizationRequest authorizationRequest = AuthorizationRequestBuilder.makeRequest(commandLineProcessor.parseUserInput(ConsoleReader.readLine()));
+                    AuthorizationRequest authorizationRequest =
+                            AuthorizationRequestBuilder.makeRequest(commandLineProcessor.parseUserInput(ConsoleReader.readLine()));
                     channel.write(authorizationRequest);
                     try {
                         AuthorizationResponse authorizationResponse = (AuthorizationResponse) channel.read();
@@ -40,9 +42,14 @@ public class Client {
                                 if ("exit".equals(command.getCommand())) {
                                     running = false;
                                 }
-                                CommandOutput output = (CommandOutput) channel.getObjectInputStream().readObject();
-                                for (String line : output.getOutput()) {
-                                    System.out.println(line);
+                                ServerDataPacket serverDataPacket = (ServerDataPacket) channel.read();
+                                System.out.println("Server message: " + serverDataPacket.getServerMessage());
+                                if (serverDataPacket.isExecuted()) {
+                                    for (String line : serverDataPacket.getCommandOutput().getOutput()) {
+                                        System.out.println(line);
+                                    }
+                                } else {
+                                    System.out.println("Execution failed");
                                 }
                             }
                         }
