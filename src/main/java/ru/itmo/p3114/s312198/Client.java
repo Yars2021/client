@@ -38,7 +38,7 @@ public class Client {
                             while (running) {
                                 AbstractCommand command = commandLineProc.parseInput(ConsoleReader.readLine(), false);
                                 channel.write(new ClientDataPacket(command, authorizationRequest.getUserSignature()));
-                                if ("exit".equals(command.getCommand())) {
+                                if (command != null && "exit".equals(command.getCommand())) {
                                     running = false;
                                 }
                                 ServerDataPacket serverDataPacket = (ServerDataPacket) channel.read();
