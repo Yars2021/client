@@ -2,17 +2,16 @@ package ru.itmo.p3114.s312198;
 
 import ru.itmo.p3114.s312198.authorization.AuthorizationRequestBuilder;
 import ru.itmo.p3114.s312198.client_command.ClientCommandLineProcessor;
+import ru.itmo.p3114.s312198.command.CommandLineProcessor;
+import ru.itmo.p3114.s312198.command.actions.AbstractCommand;
 import ru.itmo.p3114.s312198.exception.EndOfSessionException;
 import ru.itmo.p3114.s312198.exception.InvalidCommandException;
 import ru.itmo.p3114.s312198.transmission.CSChannel;
-import ru.itmo.p3114.s312198.transmission.structures.packet.ClientDataPacket;
 import ru.itmo.p3114.s312198.transmission.structures.authorization.AuthorizationRequest;
 import ru.itmo.p3114.s312198.transmission.structures.authorization.AuthorizationResponse;
-import ru.itmo.p3114.s312198.command.CommandOutput;
+import ru.itmo.p3114.s312198.transmission.structures.packet.ClientDataPacket;
 import ru.itmo.p3114.s312198.transmission.structures.packet.ServerDataPacket;
 import ru.itmo.p3114.s312198.util.ConsoleReader;
-import ru.itmo.p3114.s312198.command.CommandLineProcessor;
-import ru.itmo.p3114.s312198.command.actions.AbstractCommand;
 
 import java.io.IOException;
 import java.net.Socket;
