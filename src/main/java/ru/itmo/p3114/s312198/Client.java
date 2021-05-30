@@ -66,7 +66,7 @@ public class Client {
                 System.out.println("Lost connection to the server. Type \"Y\" to rejoin or anything else to exit");
                 connecting = "Y".equalsIgnoreCase(ConsoleReader.readLine());
             }
-            System.out.println("Shutting down");
         }
+        System.out.println("Shutting down");
     }
 }
