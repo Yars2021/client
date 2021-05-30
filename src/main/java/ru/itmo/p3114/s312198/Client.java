@@ -45,8 +45,10 @@ public class Client {
                                 ServerDataPacket serverDataPacket = (ServerDataPacket) channel.read();
                                 System.out.println("Server message: " + serverDataPacket.getServerMessage());
                                 if (serverDataPacket.isExecuted()) {
-                                    for (String line : serverDataPacket.getCommandOutput().getOutput()) {
-                                        System.out.println(line);
+                                    if (serverDataPacket.getCommandOutput().getOutput() != null) {
+                                        for (String line : serverDataPacket.getCommandOutput().getOutput()) {
+                                            System.out.println(line);
+                                        }
                                     }
                                 } else {
                                     System.out.println("Execution failed");
