@@ -1,6 +1,6 @@
 package ru.itmo.p3114.s312198.client_command.client_action;
 
-import ru.itmo.p3114.s312198.util.CommandOutput;
+import ru.itmo.p3114.s312198.command.CommandOutput;
 
 import java.util.ArrayList;
 

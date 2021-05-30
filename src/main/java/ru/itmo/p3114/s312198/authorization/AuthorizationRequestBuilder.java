@@ -1,10 +1,11 @@
 package ru.itmo.p3114.s312198.authorization;
 
-import ru.itmo.p3114.s312198.user.UserSignature;
 import ru.itmo.p3114.s312198.client_command.client_action.AbstractClientCommand;
 import ru.itmo.p3114.s312198.exception.EndOfSessionException;
 import ru.itmo.p3114.s312198.exception.InvalidCommandException;
-import ru.itmo.p3114.s312198.util.CommandOutput;
+import ru.itmo.p3114.s312198.transmission.structures.authorization.AuthorizationRequest;
+import ru.itmo.p3114.s312198.transmission.structures.user.UserSignature;
+import ru.itmo.p3114.s312198.command.CommandOutput;
 
 public class AuthorizationRequestBuilder {
     public static AuthorizationRequest makeRequest(AbstractClientCommand clientCommand) throws InvalidCommandException, EndOfSessionException {

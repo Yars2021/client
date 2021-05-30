@@ -56,7 +56,7 @@
     <dependencies>
         <dependency>
             <groupId>ru.itmo.p3114.s312198</groupId>
-            <artifactId>collection-manager</artifactId>
+            <artifactId>utils</artifactId>
             <version>1.0</version>
         </dependency>
     </dependencies>
